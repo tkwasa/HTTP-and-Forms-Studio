@@ -4,16 +4,73 @@
 	<meta charset="utf-8">
 	<script>
 		// TODO: create a handler
+	
     window.addEventListener("load", function(){
         // TODO: register the handler
+		alert("we are here");	
+		let form = document.querySelector("form"); 
+        form.addEventListener("submit", function(event) {
+       // form.addEventListener("submit", setSearchEngine); {
+       //     setSearchEngine(); {
+            alert("submit clicked 1")
+     //  });		
+       //     setSearchEngine();
+         
+       
+   //   });
+
+   //   function setSearchEngine(); {  
+        
+        const engineOptions = document.querySelectorAll('input[name="engine"]');
+        var selectedEngine = "";
+        
+        alert("submit clicked 2");
+
+        for (const engine of engineOptions) {
+            if (engine.checked) {
+				alert(engine.value)
+                selectedEngine = engine.value;
+           //     break;
+                }
+                alert(selectedEngine);
+        }
+
+        alert(selectedEngine);
+
+        let actions = {
+                "google": "https://www.google.com/",
+                "duckduckgo": "https://duckduckgo.com/",
+                "bing": "https://www.bing.com/search",
+                "ask": "https://www.ask.com/web"
+        };
+ 
+        //document.user_form.action = "https://duckduckgo.com/"
+
+        document.user_form.action = actions[selectedEngine];            
+        alert('this is it: ' + document.user_form.action);
+        user_form.method = "GET";
+        
+        })	
+
     });
 	</script>
 </head>
 
 <body>
 
-	<form id="searchForm">
+	<!--<form method="POST" action="https://handlers.education.launchcode.org/request-parrot"> -->
+    <form name=user_form>
+		<label>Test Name: <input type="text" name="q"></label><br>
+		<br>
+		Search Engine:
+        <br>
+		<label>Google: <input type="radio" name="engine" value="google"></label><br>
+		<label>Duck Duck Go: <input type="radio" name="engine" value="duckduckgo"></label><br>
+		<label>Bing: <input type="radio" name="engine" value="bing"></label><br>
+		<label>Ask: <input type="radio" name="engine" value="ask"></label><br>
+		<br>
     <!-- TODO: add form elements -->
+	    <button value="Go" >Submit</button>
 	</form>
 
 </body>
